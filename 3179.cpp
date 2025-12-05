@@ -40,8 +40,8 @@ public:
         if (b > a/2) b = a - b;
         long long int num = 1, tmp = 1;
         for (int i=a; i>(a-b); i--){
-            num *= (i % mod);
-            num /= (tmp % mod);
+            num *= i;
+            num /= tmp;
             num %= mod;
             cout << "i = "<<i<<", tmp = "<<tmp<<", num = "<<num<<"\n";
             tmp++;

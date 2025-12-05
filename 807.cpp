@@ -5,6 +5,7 @@ using namespace std;
 class Solution {
 public:
     int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
+        auto start = std::chrono::high_resolution_clock::now();
         int len = grid.size();
         int sum = 0;
         for (int i=0; i<len; i++) {
@@ -20,6 +21,9 @@ public:
                 sum += (min(row_max, col_max) - grid[i][j]);
             }
         }
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double, std::milli> duration = end - start;
+        std::cout << "程式執行時間: " << duration.count() << " 毫秒" << std::endl;
         return sum;
     }
 };
@@ -28,7 +32,6 @@ public:
 class Solution {
 public:
     int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
-        auto start = std::chrono::high_resolution_clock::now();
         int len = grid.size();
         int sum = 0;
         vector<int> col_max;
@@ -53,9 +56,6 @@ public:
                 sum += (min(row_max[i], col_max[j]) - grid[i][j]);
             }
         }
-        auto end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double, std::milli> duration = end - start;
-        std::cout << "程式執行時間: " << duration.count() << " 毫秒" << std::endl;
         return sum;
     }
 };

@@ -17,6 +17,29 @@ public:
         if (root->val) is_delete = false;
         if (root->left) {
             bool is_left_node_del = dfs(root->left);
+            if (is_left_node_del) root->left = nullptr;
+            is_delete = min(is_delete, is_left_node_del);
+        }
+        if (root->right) {
+            bool is_right_node_del = dfs(root->right);
+            if (is_right_node_del) root->right = nullptr;
+            is_delete = min(is_delete, is_right_node_del);
+        }
+        return is_delete;
+    }
+    TreeNode* pruneTree(TreeNode* root) {
+        return dfs(root) == false ? root : nullptr;
+    }
+};
+
+// 有del
+class Solution {
+public:
+    bool dfs(TreeNode *root) {
+        bool is_delete = true;
+        if (root->val) is_delete = false;
+        if (root->left) {
+            bool is_left_node_del = dfs(root->left);
             if (is_left_node_del) {
                 TreeNode *del = root->left;
                 root->left = nullptr;

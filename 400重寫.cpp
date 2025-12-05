@@ -4,18 +4,18 @@ using namespace std;
 class Solution {
 public:
     int findNthDigit(int n) {
-        int digit = 1, total = 9, start = 1;
-        int tmp = n;
-        while (tmp > digit * total) {
-            tmp -= digit * total;
+        long long int digit = 1, total_num = 9, start = 1;
+        long long int tmp = n;
+        while (tmp > digit * total_num) {
+            tmp -= digit * total_num;
             digit++;
-            total *= 10;
+            total_num *= 10;
             start *= 10;
         }
-        int true_num = start + (tmp-1)/digit;
-        int idx = (tmp-1)%digit;
+        long long int true_num = start + (tmp-1)/digit;
+        long long int idx = (tmp-1)%digit;
         string str_num = to_string(true_num);
-        int ans = str_num[idx] - '0';
+        long long int ans = str_num[idx] - '0';
         return ans;
     }
 };
